@@ -3,7 +3,7 @@
 # UrlShortenerBundle
 UrlShortenerBundle of AWHSPanel
 
-This package provides various scripts to manage multiple servers and provides a shop.
+This package provides an easy way to create shortened URLs.
 
 ## Requirements
 * Have installed the [foundation](https://github.com/TheGrimmChester/AWHSPanel/blob/master/README.md)  
