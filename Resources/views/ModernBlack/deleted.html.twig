@@ -1,0 +1,39 @@
+{% extends '::'~awhs.template~'/base_empty.html.twig' %}
+
+{% block title %}AWHSPanel - URL Deleted{% endblock %}
+
+{% block navbarMenu %}<ul class="nav navbar-nav">{% endblock %}
+
+    {% block fastNavigation %}{% endblock %}
+
+    {% block pageHeader %}{% endblock %}
+
+    {% block sidebarMenu %}
+        {% block sidebarMenuDashboard %}{% endblock %}
+        {% block sidebarMenuMore %}{% endblock %}
+    {% endblock %}
+
+    {% block content %}
+    <div style="margin-top:50px;" class="mainbox col-md-6 col-md-offset-3 col-sm-8 col-sm-offset-2">
+    <div style="text-align: center;">
+    <span style="color: #0993d7; font-size: 45px;">AWHS</span><span style="color: #808080; font-size: 45px; font-weight: 300;">Panel</span>
+    </div>
+    <div style="text-align: center;"><span style="color: #808080; font-size: 15px;">URL Shortener</span>
+    </div>
+    <hr>
+    <div class="panel" style="border-color: #1a2229;">
+    <div style="background-color: #f9f9f9;" class="panel-body">
+    <div class="col-sm-12">
+        <p>This redirection no longer exist.</p>
+    </div>
+
+    </div>
+    </div>
+
+    <div class="row">
+    <div class="col-sm-12">
+        <span style="color: #808080; font-size: 15px;">Copyright © 2010-2017 <a target="_blank" href="https://nicolasmeloni.com/fr/awhspanel">AWHS Panel</a>. Tous droits réservés.</span>
+    </div>
+    </div>
+    </div>
+{% endblock %}

@@ -1,0 +1,16 @@
+awhs_url_shortener_interface:
+    path:     /shortener
+    defaults: { _controller: AWHSUrlShortenerBundle:Default:interface }
+awhs_url_shortener_create:
+    path:     /api/shortener/create
+    defaults: { _controller: AWHSUrlShortenerBundle:Default:create }
+    methods:  [POST]
+awhs_url_shortener_redirection:
+    path:     /{shortened}
+    host:     your_domain.com
+    defaults: { _controller: AWHSUrlShortenerBundle:Default:index }
+    methods:  [GET, HEAD]
+awhs_url_shortener_homepage:
+    path:     /
+    host:     your_domain.com
+    defaults: { _controller: AWHSUrlShortenerBundle:Default:hello }

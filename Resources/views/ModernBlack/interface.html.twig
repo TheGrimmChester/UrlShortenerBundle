@@ -1,0 +1,118 @@
+{% extends '::'~awhs.template~'/base_empty.html.twig' %}
+
+{% block title %}AWHSPanel - URL Shortener{% endblock %}
+
+{% block navbarMenu %}<ul class="nav navbar-nav">{% endblock %}
+
+{% block extendJsBottom %}
+<script>
+var form_url = "{{ path('awhs_url_shortener_create') }}";
+$("#url").keypress(function(e) {
+    if(e.which == 13) {
+if ($('#url').val() == "") {
+        alert( "URL must not be empty." );
+    }else{
+        $("#btnShortMe").prop('disabled', true);
+        $("#url").prop('disabled', true);
+       $.post( form_url, { url: $("#url").val() }, function( data ) {
+          $("#url").val(data.url);
+
+        }, "json").done(function() {
+          })
+          .fail(function() {
+            alert( "URL not valid." );
+          })
+          .always(function() {
+              $("#url").prop('disabled', false);
+              $("#btnShortMe").prop('disabled', false);
+              $("#url").select();
+          });
+    }
+    }
+});
+
+$( "#btnShortMe" ).click(function() {
+    if ($('#url').val() == "") {
+        alert( "URL must not be empty." );
+    }else{
+        $("#btnShortMe").prop('disabled', true);
+        $("#url").prop('disabled', true);
+       $.post( form_url, { url: $("#url").val() }, function( data ) {
+          $("#url").val(data.url);
+
+        }, "json").done(function() {
+          })
+          .fail(function() {
+            alert( "URL not valid." );
+          })
+          .always(function() {
+              $("#url").prop('disabled', false);
+              $("#btnShortMe").prop('disabled', false);
+              $("#url").select();
+          });
+    }
+});
+
+</script>
+{% endblock %}
+
+    {% block fastNavigation %}{% endblock %}
+
+    {% block pageHeader %}{% endblock %}
+
+    {% block sidebarMenu %}
+        {% block sidebarMenuDashboard %}{% endblock %}
+        {% block sidebarMenuMore %}{% endblock %}
+    {% endblock %}
+
+    {% block content %}
+    <div style="margin-top:50px;" class="mainbox col-md-6 col-md-offset-3 col-sm-8 col-sm-offset-2">
+    <div style="text-align: center;">
+    <span style="color: #0993d7; font-size: 45px;">AWHS</span><span style="color: #808080; font-size: 45px; font-weight: 300;">Panel</span>
+    </div>
+    <div style="text-align: center;"><span style="color: #808080; font-size: 15px;">URL Shortener</span>
+    </div>
+    <hr>
+    <div class="panel" style="border-color: #1a2229;"><div class="panel-heading" style="background-color: #f9f9f9;border-bottom: 1px solid #cacaca"><div class="panel-title">Enter URL bellow:</div>
+    </div>
+    <div style="background-color: #f9f9f9;" class="panel-body">
+    <div class="col-sm-12">
+        <input id="url" type="text" class="form-control">
+        <hr>
+        <button id="btnShortMe" class="btn">Short Me!</button>
+    </div>
+    </div>
+    </div>
+
+    <div class="panel" style="border-color: #1a2229;"><div class="panel-heading" style="background-color: #f9f9f9;border-bottom: 1px solid #cacaca"><div class="panel-title">API (v1):</div>
+    </div>
+    <div style="background-color: #f9f9f9;">
+
+<pre style="overflow:auto;word-wrap:normal;white-space: pre;border-radius:0;margin:0">Title : Create redirection.
+URL : /api/shortener/create
+Method : POST
+URL Params :
+Data Params : { url : string }
+Success Response:
+    Code: 200
+    Content: { url : "https://your_domain.com/XXXX"}
+Error Response:
+    Bad Request:
+        Code: 400
+        Content: "Error message"
+    Unauthorized:
+        Code: 401
+        Content: "Unauthorized"
+</pre>
+
+    </div>
+    </div>
+
+    <div class="row">
+    <div class="col-sm-12">
+        <span style="color: #808080; font-size: 15px;">Copyright © 2010-2017 <a target="_blank" href="https://nicolasmeloni.com/fr/awhspanel">AWHS Panel</a>. Tous droits réservés.</span>
+    </div>
+    </div>
+
+    </div>
+{% endblock %}
